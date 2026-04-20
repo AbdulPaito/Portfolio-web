@@ -1,0 +1,252 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* BRUTALIST DESIGN SYSTEM - NO GRADIENTS, NO BORDER RADIUS */
+
+@theme inline {
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0;
+
+  /* BRUTALIST MONOCHROME PALETTE */
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #111111;
+  --card-foreground: #fafafa;
+  --popover: #111111;
+  --popover-foreground: #fafafa;
+
+  --primary: #fafafa;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #fafafa;
+  --muted: #1a1a1a;
+  --muted-foreground: #737373;
+  --accent: #262626;
+  --accent-foreground: #fafafa;
+  --destructive: #dc2626;
+  --destructive-foreground: #fafafa;
+  --border: #262626;
+  --input: #262626;
+  --ring: #fafafa;
+
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark {
+  /* Same as root - dark mode only */
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    border-radius: 0 !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted-foreground);
+  }
+}
+
+@layer utilities {
+  /* Sharp borders only - no radius */
+  .border-sharp {
+    border-radius: 0 !important;
+  }
+
+  /* Monochrome text weights */
+  .text-muted {
+    color: var(--color-muted-foreground);
+  }
+
+  /* Sharp card style */
+  .card-sharp {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+  }
+
+  /* Outline button style */
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--color-foreground);
+    color: var(--color-foreground);
+    transition: all 0.3s var(--transition-smooth);
+  }
+  .btn-outline:hover {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  /* Fill button style */
+  .btn-fill {
+    background: var(--color-foreground);
+    border: 1px solid var(--color-foreground);
+    color: var(--color-background);
+    transition: all 0.3s var(--transition-smooth);
+  }
+  .btn-fill:hover {
+    background: transparent;
+    color: var(--color-foreground);
+  }
+
+  /* Divider line */
+  .line-divider {
+    height: 1px;
+    background: var(--color-border);
+    width: 100%;
+  }
+
+  /* Vertical divider */
+  .line-vertical {
+    width: 1px;
+    background: var(--color-border);
+    height: 100%;
+  }
+
+  /* Grid background pattern */
+  .grid-pattern {
+    background-image:
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: center center;
+  }
+
+  /* Dot pattern */
+  .dot-pattern {
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Line animation helpers */
+  .line-draw {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+
+  /* Hover lift without shadow */
+  .hover-lift {
+    transition: transform 0.4s var(--transition-smooth);
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Stagger children animation helper */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* Clip path reveals */
+  .clip-reveal {
+    clip-path: inset(0 100% 0 0);
+  }
+  .clip-reveal-active {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* Character split animation helper */
+  .char-split .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  /* Marquee animation */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  /* Cursor blink */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .cursor-blink::after {
+    content: "_";
+    margin-left: 2px;
+    color: var(--color-foreground);
+    animation: blink 1s step-end infinite;
+  }
+
+  /* Pulse animation for indicators */
+  @keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+  }
+  .animate-pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  /* Rotation for decorative elements */
+  @keyframes slow-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .animate-slow-rotate {
+    animation: slow-rotate 60s linear infinite;
+  }
+}
+
