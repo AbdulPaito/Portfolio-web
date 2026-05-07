@@ -88,30 +88,6 @@ const skillGroups = [
 const projects = [
   {
     number: "01",
-    title: "Poultry Management System",
-    description:
-      "End-to-end SaaS platform powering real poultry farm operations — secure auth, role-based dashboards, and live production tracking.",
-    tech: ["React", "Node.js", "MongoDB", "Tailwind"],
-    link: "https://poultrysystem.vercel.app/login",
-  },
-  {
-    number: "02",
-    title: "Notes Web App",
-    description:
-      "A fast, distraction-free notes platform with secure login, real-time persistence, and a polished writing experience.",
-    tech: ["React", "Node.js", "MongoDB", "Tailwind"],
-    link: "https://noteswebs.vercel.app/login",
-  },
-  {
-    number: "03",
-    title: "Student Grade Portal",
-    description:
-      "Fullstack academic management system with separate admin and student portals — grades, records, and subject management.",
-    tech: ["React", "Next.js", "Node.js", "MongoDB"],
-    link: "https://exact-gradeportal.vercel.app/",
-  },
-  {
-    number: "04",
     title: "Nursing Student Portal",
     description:
       "Production portal serving real students — admin/student roles, announcements, event scheduling, and Cloudinary-powered uploads.",
@@ -119,7 +95,15 @@ const projects = [
     link: "https://cahseventsdocs.netlify.app/",
   },
   {
-    number: "05",
+    number: "02",
+    title: "Alaga Vet Supply",
+    description:
+      "Fullstack veterinary supply store — customers browse products and place orders; admin receives orders and calls for confirmation. Complete order flow: product catalog to cart to order submission to real-time admin notification pipeline.",
+    tech: ["React", "Node.js", "MongoDB", "Tailwind", "Vercel"],
+    link: "https://alagavetsupply.vercel.app",
+  },
+  {
+    number: "03",
     title: "Derm Whitening",
     description:
       "Business-grade booking app with public landing page and full admin dashboard for managing customer appointments. Built mobile-responsive UI, REST API backend, JWT auth, and role-based admin access control end-to-end.",
@@ -127,12 +111,28 @@ const projects = [
     link: "https://derm-whitening.vercel.app",
   },
   {
-    number: "06",
-    title: "Alaga Vet Supply",
+    number: "04",
+    title: "Student Grade Portal",
     description:
-      "Fullstack veterinary supply store — customers browse products and place orders; admin receives orders and calls for confirmation. Complete order flow: product catalog to cart to order submission to real-time admin notification pipeline.",
-    tech: ["React", "Node.js", "MongoDB", "Tailwind", "Vercel"],
-    link: "https://alagavetsupply.vercel.app",
+      "Fullstack academic management system with separate admin and student portals — grades, records, and subject management.",
+    tech: ["React", "Next.js", "Node.js", "MongoDB"],
+    link: "https://exact-gradeportal.vercel.app/",
+  },
+  {
+    number: "05",
+    title: "Poultry Management System",
+    description:
+      "End-to-end SaaS platform powering real poultry farm operations — secure auth, role-based dashboards, and live production tracking.",
+    tech: ["React", "Node.js", "MongoDB", "Tailwind"],
+    link: "https://poultrysystem.vercel.app/login",
+  },
+  {
+    number: "06",
+    title: "Notes Web App",
+    description:
+      "A fast, distraction-free notes platform with secure login, real-time persistence, and a polished writing experience.",
+    tech: ["React", "Node.js", "MongoDB", "Tailwind"],
+    link: "https://noteswebs.vercel.app/login",
   },
 ];
 
