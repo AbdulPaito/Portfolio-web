@@ -6,6 +6,7 @@ export function CustomCursor() {
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const mousePos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -18,8 +19,9 @@ export function CustomCursor() {
 
     const handleMouseMove = (e: MouseEvent) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
+      if (!isVisible) setIsVisible(true);
 
-      // Both cursor elements follow immediately
+      // Dot follows immediately for precision
       gsap.to(dot, {
         x: e.clientX,
         y: e.clientY,
@@ -27,10 +29,11 @@ export function CustomCursor() {
         ease: "none",
       });
 
+      // Ring follows with slight lag for smooth feel
       gsap.to(cursor, {
         x: e.clientX,
         y: e.clientY,
-        duration: 0.08,
+        duration: 0.12,
         ease: "power2.out",
       });
     };
@@ -52,12 +55,19 @@ export function CustomCursor() {
       }
     };
 
+    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseEnter = () => setIsVisible(true);
+
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     document.addEventListener("mouseover", handleMouseOver, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
     };
   }, []);
 
@@ -68,28 +78,44 @@ export function CustomCursor() {
 
   return (
     <>
-      {/* Main cursor ring */}
+      {/* PC-style mouse arrow pointer */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference transition-all duration-300 ${
-          isHovering ? "scale-150" : isPointer ? "scale-100" : "scale-100"
+        className={`fixed top-0 left-0 pointer-events-none z-[9999] transition-opacity duration-100 ${
+          isVisible ? "opacity-100" : "opacity-0"
         }`}
-        style={{ transform: "translate(-50%, -50%)" }}
+        style={{ transform: "translate(2px, 2px)" }}
       >
-        <div
-          className={`w-10 h-10 border border-white transition-all duration-300 ${
-            isHovering ? "bg-white/20" : "bg-transparent"
-          } ${isPointer ? "scale-50 bg-white/50" : ""}`}
-        />
+        <svg
+          width="22"
+          height="28"
+          viewBox="0 0 22 28"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="drop-shadow-[1px_1px_2px_rgba(0,0,0,0.4)]"
+        >
+          <path
+            d="M1.5 1.5L1.5 20.5L6.5 15.5L10.5 24.5L14 23L10 14.5L17 14.5L1.5 1.5Z"
+            fill="white"
+            stroke="rgba(0,0,0,0.25)"
+            strokeWidth="0.8"
+          />
+        </svg>
       </div>
 
-      {/* Cursor dot */}
+      {/* Click dot indicator (subtle) */}
       <div
         ref={cursorDotRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
-        style={{ transform: "translate(-50%, -50%)" }}
+        className={`fixed top-0 left-0 pointer-events-none z-[9999] transition-opacity duration-100 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+        style={{ transform: "translate(2px, 2px)" }}
       >
-        <div className={`w-1 h-1 bg-white transition-all duration-200 ${isPointer ? "scale-0" : "scale-100"}`} />
+        <div
+          className={`bg-white/0 transition-all duration-100 ${
+            isPointer ? "w-[6px] h-[6px] bg-white/60 rounded-full -ml-[3px] -mt-[3px]" : "w-0 h-0"
+          }`}
+        />
       </div>
 
       {/* Hide default cursor */}
