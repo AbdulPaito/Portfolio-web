@@ -12,6 +12,7 @@ import {
   Server,
   ExternalLink,
   ArrowDown,
+  PenTool,
 } from "lucide-react";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { Counter } from "@/components/portfolio/Counter";
@@ -57,9 +58,9 @@ export const Route = createFileRoute("/")({
 
 const stats = [
   { label: "Years Coding", value: 3, suffix: "+" },
-  { label: "Projects Built", value: 7, suffix: "" },
-  { label: "Live Systems", value: 6, suffix: "" },
-  { label: "Technologies", value: 10, suffix: "+" },
+  { label: "Projects Built", value: 8, suffix: "+" },
+  { label: "Live Systems", value: 8, suffix: "+" },
+  { label: "Technologies", value: 14, suffix: "+" },
 ];
 
 const skillGroups = [
@@ -83,11 +84,24 @@ const skillGroups = [
     icon: Wrench,
     skills: ["Git / GitHub", "Vercel", "Render", "Cloudinary"],
   },
+  {
+    title: "CMS & Content",
+    icon: PenTool,
+    skills: ["WordPress", "Article Writing", "Blog Content Creation", "SEO Content"],
+  },
 ];
 
 const projects = [
   {
     number: "01",
+    title: "Concrete Landing Page",
+    description:
+      "A modern, high-performance landing page featuring sleek animations and a brutalist design aesthetic. Designed for maximum conversion and optimal user experience.",
+    tech: ["React", "Tailwind CSS", "GSAP"],
+    link: "https://concrete-landing-page.vercel.app/",
+  },
+  {
+    number: "02",
     title: "Nursing Student Portal",
     description:
       "Production portal serving real students — admin/student roles, announcements, event scheduling, and Cloudinary-powered uploads.",
@@ -95,15 +109,15 @@ const projects = [
     link: "https://cahseventsdocs.netlify.app/",
   },
   {
-    number: "02",
-    title: "Alaga Vet Supply",
+    number: "03",
+    title: "Psalmer Agrivet Trading",
     description:
-      "Fullstack veterinary supply store — customers browse products and place orders; admin receives orders and calls for confirmation. Complete order flow: product catalog to cart to order submission to real-time admin notification pipeline.",
+      "Fullstack veterinary and agricultural supply store — customers browse products and place orders; admin receives orders and calls for confirmation. Complete order flow: product catalog to cart to order submission to real-time admin notification pipeline.",
     tech: ["React", "Node.js", "MongoDB", "Tailwind", "Vercel"],
-    link: "https://alagavetsupply.vercel.app",
+    link: "https://psalmeragrivettrading.vercel.app/",
   },
   {
-    number: "03",
+    number: "04",
     title: "Derm Whitening",
     description:
       "Business-grade booking app with public landing page and full admin dashboard for managing customer appointments. Built mobile-responsive UI, REST API backend, JWT auth, and role-based admin access control end-to-end.",
@@ -111,7 +125,7 @@ const projects = [
     link: "https://derm-whitening.vercel.app",
   },
   {
-    number: "04",
+    number: "05",
     title: "Student Grade Portal",
     description:
       "Fullstack academic management system with separate admin and student portals — grades, records, and subject management.",
@@ -119,7 +133,7 @@ const projects = [
     link: "https://exact-gradeportal.vercel.app/",
   },
   {
-    number: "05",
+    number: "06",
     title: "Poultry Management System",
     description:
       "End-to-end SaaS platform powering real poultry farm operations — secure auth, role-based dashboards, and live production tracking.",
@@ -127,12 +141,20 @@ const projects = [
     link: "https://poultrysystem.vercel.app/login",
   },
   {
-    number: "06",
+    number: "07",
     title: "Notes Web App",
     description:
       "A fast, distraction-free notes platform with secure login, real-time persistence, and a polished writing experience.",
     tech: ["React", "Node.js", "MongoDB", "Tailwind"],
     link: "https://noteswebs.vercel.app/login",
+  },
+  {
+    number: "08",
+    title: "Jasmin Paito Portfolio",
+    description:
+      "A personalized professional portfolio website designed and developed to showcase skills, projects, and career achievements with a modern and interactive UI.",
+    tech: ["React", "Tailwind CSS", "Vercel"],
+    link: "https://jasminpaito-portfolio.vercel.app/",
   },
 ];
 
