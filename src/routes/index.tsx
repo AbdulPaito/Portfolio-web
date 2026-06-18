@@ -640,9 +640,9 @@ function Portfolio() {
                 <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
                   <MagneticButton
                     href="mailto:abdulpaito2129@gmail.com"
-                    className="btn-fill px-8 py-4 font-mono text-sm uppercase tracking-wider inline-flex items-center justify-center gap-2"
+                    className="btn-fill px-8 py-4 font-mono text-sm tracking-wider inline-flex items-center justify-center gap-2"
                   >
-                    <Mail className="h-4 w-4" /> Email Me
+                    <Mail className="h-4 w-4" /> abdulpaito2129@gmail.com
                   </MagneticButton>
                   <MagneticButton
                     href="https://github.com/AbdulPaito"
